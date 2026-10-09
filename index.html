@@ -35,3 +35,23 @@
     </div>
   </div>
   <!-- 埋め込み用コンポーネントここまで -->
+
+  <script>
+    // 要素の取得
+    const inputElement = document.getElementById('numberInput');
+    const outputElement = document.getElementById('textOutput');
+
+    // 入力イベントの検知とテキスト反映
+    inputElement.addEventListener('input', (event) => {
+      const val = event.target.value.trim();
+
+      if (val === '') {
+        outputElement.innerHTML = '<span class="text-slate-400 italic">（入力された数値がここにテキストとして表示されます）</span>';
+      } else {
+        // テキストとして安全に出力 (textContentを利用してXSS防止)
+        outputElement.textContent = String(val);
+      }
+    });
+  </script>
+</body>
+</html>
